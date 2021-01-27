@@ -1,0 +1,64 @@
+﻿<Window x:Class="PrinBarCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrinBarCode"
+        mc:Ignorable="d"
+        Title="PintBarCode" Height="550" Width="400" Icon="Icon.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="205"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <Button x:Name="btnOpenDialog" Click="btnOpenDialog_Click">Выбрать файл</Button>
+            <Button x:Name="btnPrint" Click="btnPrint_Click">Печать</Button>
+        </StackPanel>
+
+        <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Margin="0,0,20,10">
+                <Label Content="Брэнд" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+                <ComboBox Width="200" Margin="61,0,0,0" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
+                <Label Content="Тип" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+                <ComboBox Margin="90,0,0,0" Width="200" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
+                <Label Content="Высота" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+                <ComboBox Margin="48,0,0,0" Width="200" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
+                <Label Content="Длина" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+                <ComboBox Margin="60,0,0,0" Width="200" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
+                <Label Content="Регулятор" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+                <ComboBox Margin="17,0,20,0" Width="150" Height="30"/>
+                <Label Content="H" FontFamily="Arial" FontSize="24" Background="White" Foreground="Red" FontWeight="Bold"></Label>
+            </StackPanel>
+            <WrapPanel Background="#FFFBED94" Margin="10,-1,10,0" >
+
+                <StackPanel Margin="20,10,0,0" Orientation="Horizontal">
+                    <Label Content="Артикул:" FontFamily="Arial" FontSize="18" Margin="0,0,30,0"></Label>
+                    <TextBlock Text="7724125620" FontSize="24" FontFamily="Arial" Width="242"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
+                    <Label Content="Профиль:" FontFamily="Arial" FontSize="18" Margin="0,0,19,0"></Label>
+                    <TextBlock Text="VK-Profil rh" FontSize="24" FontFamily="Arial"></TextBlock>
+                </StackPanel>
+            </WrapPanel>
+
+            <StackPanel Margin="0,27,0,0" Orientation="Vertical">
+                <Button Width="160" Height="80" Margin="110,0" FontSize="24" FontFamily="Arial" Content="Печатать" />
+            </StackPanel>
+
+        </WrapPanel>
+
+    </Grid>
+</Window>
