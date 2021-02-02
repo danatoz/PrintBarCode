@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrinBarCode", "PrinBarCode\PrinBarCode.csproj", "{0F2C65D0-DBD3-474A-9107-C3EA2C02F72E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateTest", "GenerateTest\GenerateTest.csproj", "{FF5DFC71-8190-4EA9-B07C-E2B59A2C8178}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0F2C65D0-DBD3-474A-9107-C3EA2C02F72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2C65D0-DBD3-474A-9107-C3EA2C02F72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2C65D0-DBD3-474A-9107-C3EA2C02F72E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF5DFC71-8190-4EA9-B07C-E2B59A2C8178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5DFC71-8190-4EA9-B07C-E2B59A2C8178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5DFC71-8190-4EA9-B07C-E2B59A2C8178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5DFC71-8190-4EA9-B07C-E2B59A2C8178}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

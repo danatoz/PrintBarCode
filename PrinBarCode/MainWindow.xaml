@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:PrinBarCode"
         mc:Ignorable="d"
         Title="PintBarCode" Height="550" Width="400" Icon="Icon.png">
+    <Window.Resources>
+
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="205"/>
@@ -23,30 +26,70 @@
         <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" Margin="0,0,20,10">
                 <Label Content="Брэнд" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
-                <ComboBox Width="200" Margin="61,0,0,0" Height="30"/>
+                <ComboBox x:Name="cbBrand" Width="200" Margin="61,0,0,0" Height="30"
+                          ItemsSource="{x:Static local:Resources.BrandDictionary}"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
                 <Label Content="Тип" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
-                <ComboBox Margin="90,0,0,0" Width="200" Height="30"/>
+                <ComboBox x:Name="cbLayer" Margin="90,0,0,0" Width="200" Height="30"
+                          ItemsSource="{x:Static local:Resources.LayerDictionary}"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
                 <Label Content="Высота" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
-                <ComboBox Margin="48,0,0,0" Width="200" Height="30"/>
+                <ComboBox x:Name="cbHeight" Margin="48,0,0,0" Width="200" Height="30"
+                          ItemsSource="{x:Static local:Resources.HeightDictionary}"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
                 <Label Content="Длина" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
-                <ComboBox Margin="60,0,0,0" Width="200" Height="30"/>
+                <ComboBox x:Name="cbLength" Margin="60,0,0,0" Width="200" Height="30"
+                          ItemsSource="{x:Static local:Resources.LengthDictionary}"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
                 <Label Content="Регулятор" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
-                <ComboBox Margin="17,0,20,0" Width="150" Height="30"/>
+                <ComboBox x:Name="cbOptions" Margin="17,0,20,0" Width="150" Height="30" 
+                          ItemsSource="{x:Static local:Resources.OptionsDictionary}"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <Label Content="H" FontFamily="Arial" FontSize="24" Background="White" Foreground="Red" FontWeight="Bold"></Label>
             </StackPanel>
             <WrapPanel Background="#FFFBED94" Margin="10,-1,10,0" >
 
                 <StackPanel Margin="20,10,0,0" Orientation="Horizontal">
                     <Label Content="Артикул:" FontFamily="Arial" FontSize="18" Margin="0,0,30,0"></Label>
-                    <TextBlock Text="7724125620" FontSize="24" FontFamily="Arial" Width="242"></TextBlock>
+                    <TextBlock Name="lblArticul" Text="7724125620" FontSize="24" FontFamily="Arial" Width="242"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
                     <Label Content="Профиль:" FontFamily="Arial" FontSize="18" Margin="0,0,19,0"></Label>
@@ -55,7 +98,7 @@
             </WrapPanel>
 
             <StackPanel Margin="0,27,0,0" Orientation="Vertical">
-                <Button Width="160" Height="80" Margin="110,0" FontSize="24" FontFamily="Arial" Content="Печатать" />
+                <Button Name="btnPrintBarCode" Width="160" Height="80" Margin="110,0" FontSize="24" FontFamily="Arial" Content="Печатать" Click="btnPrintBarCode_Click" />
             </StackPanel>
 
         </WrapPanel>
