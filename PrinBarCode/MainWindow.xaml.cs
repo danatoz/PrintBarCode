@@ -46,7 +46,7 @@ namespace PrinBarCode
             string cbOptionsText = cbOptions.Text;
             GenerateArticle article = new GenerateArticle(cbBrandText,cbLayerText,cbHeightText,cbLengthText,cbOptionsText);
 
-            lblArticul.Text = article.Generate();
+            //lblArticul.Text = article.Generate();
             #endregion
 
             //string lblArticle = lblArticul.Text;
