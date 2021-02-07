@@ -30,26 +30,9 @@ namespace PrinBarCode
         private Font printFont;
         private StreamReader streamToPrint;
         private string filePath;//  = @"C:\Users\Dante\Desktop\asd.txt"
-
-
-
-
         public MainWindow()
         {
             InitializeComponent();
-            #region GenerateVariable
-
-            string cbBrandText = cbBrand.Text;
-            string cbLayerText = cbLayer.Text;
-            string cbHeightText = cbHeight.Text;
-            string cbLengthText = cbLength.Text;
-            string cbOptionsText = cbOptions.Text;
-            GenerateArticle article = new GenerateArticle(cbBrandText,cbLayerText,cbHeightText,cbLengthText,cbOptionsText);
-
-            //lblArticul.Text = article.Generate();
-            #endregion
-
-            //string lblArticle = lblArticul.Text;
         }
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
@@ -139,9 +122,22 @@ namespace PrinBarCode
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
             GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
+            MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
+            MyBarCode.ToBitmap();
             MyBarCode.SaveAsPng("MyBarCode.png");
-
             System.Diagnostics.Process.Start("MyBarCode.png");
+        }
+
+        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            string cbBrandText = cbBrand.Text;
+            string cbLayerText = cbLayer.Text;
+            string cbHeightText = cbHeight.Text;
+            string cbLengthText = cbLength.Text;
+            string cbOptionsText = cbOptions.Text;
+            GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
+
+            lblArticul.Text = article.Generate();
         }
     }
 }

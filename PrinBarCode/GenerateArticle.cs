@@ -30,14 +30,35 @@ namespace PrinBarCode
 
         public string Generate()
         {
-            string brand = Resources.BrandDictionary[this.brand];
-            string layer = Resources.LayerDictionary[this.layer];
-            string height = Resources.HeightDictionary[this.height];
-            string length = Resources.LengthDictionary[this.length];
-            string options = Resources.OptionsDictionary[this.options];
+            string _brand = Split(this.brand).ToString();
+            string brand = Resources.BrandDictionary[_brand];
 
-            string result = brand + layer + height + length + options;
+            string _layer = Split(this.layer).ToString();
+            string layer = Resources.LayerDictionary[_layer];
+
+            string _height = Split(this.height).ToString();
+            string height = Resources.HeightDictionary[_height];
+
+            string _length = Split(this.length).ToString();
+            string length = Resources.LengthDictionary[_length];
+
+            string _options = Split(this.options).ToString();
+            string options = Resources.OptionsDictionary[_options];
+
+            string result = $"7724{brand}{layer}{height}{length}{options}";//"7724{0}{1}{2}{3}{4}",brand, layer, height, length, options);
             return result;
+        }
+
+        private string Split(string split)
+        {
+            int found = split.IndexOf("[");
+            split = split.Remove(found,1);
+            int count = split.Length;
+            found = split.IndexOf(",");
+            
+            split = split.Remove(found);
+
+            return split;
         }
     }
 }

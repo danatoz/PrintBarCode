@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode"
         mc:Ignorable="d"
-        Title="PintBarCode" Height="550" Width="400" Icon="Icon.png">
+        Title="PintBarCode" Height="550" Width="800" Icon="Icon.png">
     <Window.Resources>
 
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="205"/>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.ColumnSpan="2">
+        <StackPanel Grid.ColumnSpan="1">
             <Button x:Name="btnOpenDialog" Click="btnOpenDialog_Click">Выбрать файл</Button>
             <Button x:Name="btnPrint" Click="btnPrint_Click">Печать</Button>
         </StackPanel>
 
-        <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="2">
+        <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal" Margin="0,0,20,10">
                 <Label Content="Брэнд" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
                 <ComboBox x:Name="cbBrand" Width="200" Margin="61,0,0,0" Height="30"
@@ -100,8 +100,13 @@
             <StackPanel Margin="0,27,0,0" Orientation="Vertical">
                 <Button Name="btnPrintBarCode" Width="160" Height="80" Margin="110,0" FontSize="24" FontFamily="Arial" Content="Печатать" Click="btnPrintBarCode_Click" />
             </StackPanel>
-
+            <StackPanel>
+                <Button x:Name="btnGenerate" Click="btnGenerate_Click">Генерировать</Button>
+            </StackPanel>
         </WrapPanel>
+        <StackPanel Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Image x:Name="imgBarCode" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+        </StackPanel>
 
     </Grid>
 </Window>
