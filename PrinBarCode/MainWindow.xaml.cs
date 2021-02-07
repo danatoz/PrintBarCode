@@ -127,7 +127,11 @@ namespace PrinBarCode
             MyBarCode.SaveAsPng("MyBarCode.png");
             System.Diagnostics.Process.Start("MyBarCode.png");
         }
-
+        /// <summary>
+        /// Передаем данные в класс GenerateArticle и пременяем метод сбора артикула к лейблу.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
             string cbBrandText = cbBrand.Text;

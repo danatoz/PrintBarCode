@@ -27,7 +27,10 @@ namespace PrinBarCode
             this.length = length;
             this.options = options;
         }
-
+        /// <summary>
+        /// Генерируем артикул из данных класса "ресурсы"
+        /// </summary>
+        /// <returns></returns>
         public string Generate()
         {
             string _brand = Split(this.brand).ToString();
@@ -49,6 +52,12 @@ namespace PrinBarCode
             return result;
         }
 
+        /// <summary>
+        /// Подгоняем вид полученных данных из класса "ресурсы", из словаря вида [Buderus, 1]
+        /// на выходе получаем ключ для обращения к словарю и получения значения
+        /// </summary>
+        /// <param name="split"></param>
+        /// <returns></returns>
         private string Split(string split)
         {
             int found = split.IndexOf("[");
