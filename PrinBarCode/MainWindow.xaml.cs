@@ -122,10 +122,10 @@ namespace PrinBarCode
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
             GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
-            MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
-            MyBarCode.ToBitmap();
-            MyBarCode.SaveAsPng("MyBarCode.png");
-            System.Diagnostics.Process.Start("MyBarCode.png");
+            //MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
+            GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
+            //imgBarCode.Source = generateBarcode.BitmapToImageSource(MyBarCode.ToBitmap());
+
         }
         /// <summary>
         /// Передаем данные в класс GenerateArticle и пременяем метод сбора артикула к лейблу.
@@ -142,6 +142,11 @@ namespace PrinBarCode
             GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
 
             lblArticul.Text = article.Generate();
+
+            GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
+            
+            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblProfile.Text));
+
         }
     }
 }

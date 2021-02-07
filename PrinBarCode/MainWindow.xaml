@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode"
         mc:Ignorable="d"
-        Title="PintBarCode" Height="550" Width="800" Icon="Icon.png">
+        Title="PintBarCode" Height="570" Width="860" Icon="Icon.png">
     <Window.Resources>
 
     </Window.Resources>
@@ -93,7 +93,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
                     <Label Content="Профиль:" FontFamily="Arial" FontSize="18" Margin="0,0,19,0"></Label>
-                    <TextBlock Text="VK-Profil rh" FontSize="24" FontFamily="Arial"></TextBlock>
+                    <TextBlock Name="lblProfile" Text="VK-Profil" FontSize="24" FontFamily="Arial"></TextBlock>
                 </StackPanel>
             </WrapPanel>
 
@@ -104,9 +104,6 @@
                 <Button x:Name="btnGenerate" Click="btnGenerate_Click">Генерировать</Button>
             </StackPanel>
         </WrapPanel>
-        <StackPanel Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <Image x:Name="imgBarCode" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
-        </StackPanel>
-
+        <Image x:Name="imgBarCode" Width="420" Height="460" Margin="10" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>
