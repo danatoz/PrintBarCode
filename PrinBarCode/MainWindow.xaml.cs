@@ -18,6 +18,9 @@ using System.IO;
 using Microsoft.Win32;
 using IronBarCode;
 using Brushes = System.Drawing.Brushes;
+using Image = System.Drawing.Image;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace PrinBarCode
 {
@@ -37,57 +40,13 @@ namespace PrinBarCode
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                streamToPrint = new StreamReader(filePath);
-                try
-                {
-                    printFont = new Font("Arial", 10);
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintPage += new PrintPageEventHandler(pdPrintPage);
-                    // Print the document.
-                    pd.Print();
-                }
-                finally
-                {
-                    streamToPrint.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
 
         }
 
         private void pdPrintPage(object sender, PrintPageEventArgs ev)
         {
-            float linesPerPage = 20;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            String line = null;
-
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-                           printFont.GetHeight(ev.Graphics);
-
-            // Iterate over the file, printing each line.
-            while (count < linesPerPage &&
-                   ((line = streamToPrint.ReadLine()) != null))
-            {
-                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
-                    leftMargin, yPos, new StringFormat());
-                count++;
-            }
-
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
+            //Image img = Image.FromHbitmap(imgBarCode);
         }
 
 
@@ -119,12 +78,23 @@ namespace PrinBarCode
 
         }
 
+        //private System.Drawing.Bitmap imgBitmap;
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
             GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
             //MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
             GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
             //imgBarCode.Source = generateBarcode.BitmapToImageSource(MyBarCode.ToBitmap());
+            PrintDialog dlg = new PrintDialog();
+            bool? result = dlg.ShowDialog();
+            
+            if (result.HasValue && result.Value)
+            {
+                imgBarCode.Measure(new Size(dlg.PrintableAreaWidth, dlg.PrintableAreaHeight));
+                imgBarCode.Arrange(new Rect(new Point(0,0),imgBarCode.DesiredSize));
+
+                dlg.PrintVisual(imgBarCode, "Print a Large Image");
+            }
 
         }
         /// <summary>
@@ -144,8 +114,7 @@ namespace PrinBarCode
             lblArticul.Text = article.Generate();
 
             GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
-            
-            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblProfile.Text));
+            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblArticul.Text)); ;
 
         }
     }

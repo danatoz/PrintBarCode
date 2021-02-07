@@ -56,9 +56,42 @@ namespace PrinBarCode
             drawing.Clear(bgColor);
 
             //создаем кисть для текста
+            drawing.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             Brush textBrush = new SolidBrush(textColor);
 
-            drawing.DrawString(text,font,textBrush,11,415,StringFormat.GenericTypographic);
+            #region Draw text down
+            drawing.DrawString("VK-Profil", font, textBrush, 11, 415);
+            drawing.DrawString("22/200/2000", font, textBrush, 160, 415);
+            font = new Font(ff, 18);
+            drawing.DrawString("Buderus", font, textBrush, 11, 340);
+            font = new Font(ff, 9);
+            drawing.DrawString(text, font, textBrush, 15, 330);
+            drawing.DrawString("Bosh Group", font, textBrush, 15, 365);
+            drawing.DrawString("ООО Еврорадиаторы", font, textBrush, 15, 378);
+            drawing.DrawString("Россия г. Энгельс", font, textBrush, 15, 389);
+            drawing.DrawString("413105 Саратовская обл.", font, textBrush, 15, 400);
+            font = new Font(ff, 18);
+            drawing.DrawString(text, font, textBrush, 270, 390);
+            #endregion
+
+            //drawing.RotateTransform(90);
+            drawing.RotateTransform(180);
+            #region Draw text down
+            font = new Font(ff, 26);
+            drawing.DrawString("VK-Profil", font, textBrush, -410, -40);
+            drawing.DrawString("22/200/2000", font, textBrush, 160, 415);
+            font = new Font(ff, 18);
+            drawing.DrawString("Buderus", font, textBrush, 11, 340);
+            font = new Font(ff, 9);
+            drawing.DrawString("Bosh Group", font, textBrush, 15, 365);
+            drawing.DrawString("ООО Еврорадиаторы", font, textBrush, 15, 378);
+            drawing.DrawString("Россия г. Энгельс", font, textBrush, 15, 389);
+            drawing.DrawString("413105 Саратовская обл.", font, textBrush, 15, 400);
+            font = new Font(ff, 18);
+            drawing.DrawString(text, font, textBrush, 270, 390);
+
+
+            #endregion
 
             drawing.Save();
 
