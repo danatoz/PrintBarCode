@@ -5,9 +5,114 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
-        Title="LabelBarCode" Height="450" Width="450">
-    <Grid>
-        <Image x:Name="image" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Center" Width="Auto" MinWidth="440" MinHeight="440"/>
+        Title="LabelBarCode" Height="510" Width="420">
+    <Grid Margin="11">
+        <StackPanel>
+            <StackPanel Name="mainPanel">
+                <StackPanel Height="33" Background="Aqua" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="tbNameRadiator2" FontSize="26" Margin="0,0,20,0">X-Profil</TextBlock>
+                        <TextBlock Name="tbTHL2" FontSize="26" Margin="0">22/900/2000</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Height="109" Background="Aquamarine">
+                    <Grid Height="110" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <StackPanel Grid.Column="0" Background="BlueViolet" Height="14" VerticalAlignment="Top">
+                                <TextBlock Name="tbArticul2">7724000000 0 00000</TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" Background="Aqua" Height="28" VerticalAlignment="Top">
+                                <TextBlock Name="tbBrand2" FontSize="26" TextDecorations="Underline" FontFamily="Arial">Buderus</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock Name="tbAdress2" FontSize="9">Bosh Group</TextBlock>
+                                <TextBlock Name="tbFirm2" FontSize="9">ООО Еврорадиаторы</TextBlock>
+                                <TextBlock Name="tbManufacturerAddress2" FontSize="9">Россия г. Энгельс</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Name="tbIndex2" FontSize="9" Margin="0,0,5,0">413105</TextBlock>
+                                    <TextBlock Name="tbRegion2" FontSize="9">Саратовска обл.</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Image Name="imgBarCode2" Height="110"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Name="tbDate2" HorizontalAlignment="Right">08.02.2021</TextBlock>
+                            <Image Name="imgCertification2" Height="60" Margin="10,0" Source="/PrinBarCode;component/Image/Icon/sertification.png"/>
+                            <TextBlock Name="tbArticul13" FontSize="24">7724000000</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Height="120">
+                    <Image Name="imgBarCodeInformation" Height="120" Width="390"></Image>
+                </StackPanel>
+                <StackPanel Height="109" Background="Aquamarine">
+                    <Grid Height="110">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <StackPanel Grid.Column="0" Background="BlueViolet" Height="14" VerticalAlignment="Top">
+                                <TextBlock Name="tbArticul1">7724000000 0 00000</TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" Background="Aqua" Height="28" VerticalAlignment="Top">
+                                <TextBlock Name="tbBrand" FontSize="26" TextDecorations="Underline" FontFamily="Arial">Buderus</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock Name="tbAdress" FontSize="9">Bosh Group</TextBlock>
+                                <TextBlock Name="tbFirm" FontSize="9">ООО Еврорадиаторы</TextBlock>
+                                <TextBlock Name="tbManufacturerAddress" FontSize="9">Россия г. Энгельс</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Name="tbIndex" FontSize="9" Margin="0,0,5,0">413105</TextBlock>
+                                    <TextBlock Name="tbRegion" FontSize="9">Саратовска обл.</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Image Name="imgBarCode" Height="110"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Name="tbDate" HorizontalAlignment="Right">08.02.2021</TextBlock>
+                            <Image Name="imgCertification" Height="60" Margin="10,0" Source="/PrinBarCode;component/Image/Icon/sertification.png"/>
+                            <TextBlock Name="tbArticul12" FontSize="24">7724000000</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Height="33" Background="Aqua">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="tbNameRadiator1" FontSize="26" Margin="0,0,20,0">X-Profil</TextBlock>
+                        <TextBlock Name="tbTHL1" FontSize="26" Margin="0">22/900/2000</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <Button Name="btnPrint" Click="btnPrint_Click_1" FontSize="18" FontWeight="Bold">Печать</Button>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
 </Window>

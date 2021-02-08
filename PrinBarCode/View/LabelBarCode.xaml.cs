@@ -19,9 +19,19 @@ namespace PrinBarCode.View
     /// </summary>
     public partial class LabelBarCode : Window
     {
-        public LabelBarCode()
+        public LabelBarCode(string brand, string layer, string height, string length, string options)
         {
             InitializeComponent();
+        }
+
+
+        private void btnPrint_Click_1(object sender, RoutedEventArgs e)
+        {
+            var dialog = new PrintDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                dialog.PrintVisual(mainPanel, "Вывод этикетки на печать");
+            }
         }
     }
 }

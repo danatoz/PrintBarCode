@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode"
         mc:Ignorable="d"
-        Title="PintBarCode" Height="570" Width="860" Icon="Icon.png">
+        Title="PintBarCode" Height="570" Width="400" Icon="Icon.png">
     <Window.Resources>
 
     </Window.Resources>
@@ -18,11 +18,16 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.ColumnSpan="1">
-            <Button x:Name="btnOpenDialog" Click="btnOpenDialog_Click">Выбрать файл</Button>
-            <Button x:Name="btnPrint" Click="btnPrint_Click">Печать</Button>
+        <StackPanel Grid.Row="0">
+            <Menu Height="25" VerticalAlignment="Top">
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Справочник"/>
+                    <Separator/>
+                    <MenuItem Header="Выход"/>
+                </MenuItem>
+                <MenuItem Header="О программе"/>
+            </Menu>
         </StackPanel>
-
         <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal" Margin="0,0,20,10">
                 <Label Content="Брэнд" FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" Margin="20,0,0,0"/>
@@ -98,12 +103,10 @@
             </WrapPanel>
 
             <StackPanel Margin="0,27,0,0" Orientation="Vertical">
-                <Button Name="btnPrintBarCode" Width="160" Height="80" Margin="110,0" FontSize="24" FontFamily="Arial" Content="Печатать" Click="btnPrintBarCode_Click" />
-            </StackPanel>
-            <StackPanel>
-                <Button x:Name="btnGenerate" Click="btnGenerate_Click">Генерировать</Button>
+                <Button Name="btnPrintBarCode" Width="160" Height="80" Margin="110,0" FontSize="24" 
+                        FontFamily="Arial" Content="Печатать" Click="btnPrintBarCode_Click" />
+                <Button x:Name="btnGenerate" Click="btnGenerate_Click" Width="160" Margin="0,10,0,0">Предпросмотр</Button>
             </StackPanel>
         </WrapPanel>
-        <Image x:Name="imgBarCode" Width="420" Height="460" Margin="10" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

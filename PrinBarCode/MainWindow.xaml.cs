@@ -17,6 +17,7 @@ using System.Drawing.Printing;
 using System.IO;
 using Microsoft.Win32;
 using IronBarCode;
+using PrinBarCode.View;
 using Brushes = System.Drawing.Brushes;
 using Image = System.Drawing.Image;
 using Point = System.Windows.Point;
@@ -85,16 +86,7 @@ namespace PrinBarCode
             //MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
             GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
             //imgBarCode.Source = generateBarcode.BitmapToImageSource(MyBarCode.ToBitmap());
-            PrintDialog dlg = new PrintDialog();
-            bool? result = dlg.ShowDialog();
-            
-            if (result.HasValue && result.Value)
-            {
-                imgBarCode.Measure(new Size(dlg.PrintableAreaWidth, dlg.PrintableAreaHeight));
-                imgBarCode.Arrange(new Rect(new Point(0,0),imgBarCode.DesiredSize));
 
-                dlg.PrintVisual(imgBarCode, "Print a Large Image");
-            }
 
         }
         /// <summary>
@@ -104,17 +96,19 @@ namespace PrinBarCode
         /// <param name="e"></param>
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
+
             string cbBrandText = cbBrand.Text;
             string cbLayerText = cbLayer.Text;
             string cbHeightText = cbHeight.Text;
             string cbLengthText = cbLength.Text;
             string cbOptionsText = cbOptions.Text;
-            GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
+            new LabelBarCode(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText).ShowDialog();
+            /*GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
 
             lblArticul.Text = article.Generate();
 
             GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
-            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblArticul.Text)); ;
+            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblArticul.Text));*/
 
         }
     }
