@@ -30,64 +30,37 @@ namespace PrinBarCode
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string result = "";
-        private Font printFont;
-        private StreamReader streamToPrint;
-        private string filePath;//  = @"C:\Users\Dante\Desktop\asd.txt"
+
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        private void btnPrint_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-
-        private void pdPrintPage(object sender, PrintPageEventArgs ev)
-        {
-            //Image img = Image.FromHbitmap(imgBarCode);
-        }
-
-
-        void PrinPageHandler(object sender, PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString(result, new Font("Arial", 14), Brushes.Black, 0, 0);
-        }
-
-        private void btnOpenDialog_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.InitialDirectory = "c:\\";
-            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.FilterIndex = 2;
-            openFileDialog.RestoreDirectory = true;
-            var fileContent = string.Empty;
-            if (openFileDialog.ShowDialog() != DialogResult)
-            {
-                filePath = openFileDialog.FileName;
-
-                var fileStream = openFileDialog.OpenFile();
-
-                using (StreamReader reader = new StreamReader(fileStream))
-                {
-                    fileContent = reader.ReadToEnd();
-                }
-            }
-
-        }
-
-        //private System.Drawing.Bitmap imgBitmap;
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
-            GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
-            //MyBarCode.AddAnnotationTextBelowBarcode(lblArticul.Text);
-            GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
-            //imgBarCode.Source = generateBarcode.BitmapToImageSource(MyBarCode.ToBitmap());
+            LabelBarCode lblBarCode = new LabelBarCode();
+            var labelPrint = lblBarCode.mainPanel;
 
+            string cbBrandText = cbBrand.Text;
+            string cbLayerText = cbLayer.Text;
+            string cbHeightText = cbHeight.Text;
+            string cbLengthText = cbLength.Text;
+            string cbOptionsText = cbOptions.Text;
+            string lbArtricul = lblArticul.Text;
 
+            /*new LabelBarCode(cbBrandText, cbLayerText,
+                cbHeightText, cbLengthText,
+                cbOptionsText, lbArtricul).Hide();
+
+            var dialog = new PrintDialog();
+            try
+            {
+                if (dialog.ShowDialog() == true)
+                    dialog.PrintVisual(labelPrint, "Вывод этикетки на печать");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(),"Ошибка");
+            }*/
         }
         /// <summary>
         /// Передаем данные в класс GenerateArticle и пременяем метод сбора артикула к лейблу.
@@ -102,13 +75,12 @@ namespace PrinBarCode
             string cbHeightText = cbHeight.Text;
             string cbLengthText = cbLength.Text;
             string cbOptionsText = cbOptions.Text;
-            new LabelBarCode(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText).ShowDialog();
-            /*GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
+            string lbArtricul = lblArticul.Text;
+            GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
 
-            lblArticul.Text = article.Generate();
-
-            GenerateBarcodeImage generateBarcode = new GenerateBarcodeImage();
-            imgBarCode.Source = generateBarcode.BitmapToImageSource(generateBarcode.drawImage(lblArticul.Text));*/
+            new LabelBarCode(cbBrandText, cbLayerText, 
+                cbHeightText, cbLengthText, 
+                cbOptionsText, lbArtricul).ShowDialog();
 
         }
     }

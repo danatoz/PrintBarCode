@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
-        Title="LabelBarCode" Height="510" Width="420">
-    <Grid Margin="11">
-        <StackPanel>
+        Title="LabelBarCode" Height="510" Width="430">
+    <Grid>
+        <StackPanel Margin="11">
             <StackPanel Name="mainPanel">
-                <StackPanel Height="33" Background="Aqua" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Height="33" RenderTransformOrigin="0.5,0.5">
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -23,7 +23,7 @@
                         <TextBlock Name="tbTHL2" FontSize="26" Margin="0">22/900/2000</TextBlock>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Height="109" Background="Aquamarine">
+                <StackPanel Height="109">
                     <Grid Height="110" RenderTransformOrigin="0.5,0.5">
                         <Grid.RenderTransform>
                             <TransformGroup>
@@ -39,10 +39,10 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel>
-                            <StackPanel Grid.Column="0" Background="BlueViolet" Height="14" VerticalAlignment="Top">
+                            <StackPanel Grid.Column="0" Height="14" VerticalAlignment="Top">
                                 <TextBlock Name="tbArticul2">7724000000 0 00000</TextBlock>
                             </StackPanel>
-                            <StackPanel Grid.Column="0" Background="Aqua" Height="28" VerticalAlignment="Top">
+                            <StackPanel Grid.Column="0" Height="28" VerticalAlignment="Top">
                                 <TextBlock Name="tbBrand2" FontSize="26" TextDecorations="Underline" FontFamily="Arial">Buderus</TextBlock>
                             </StackPanel>
                             <StackPanel Margin="0,5,0,0">
@@ -66,9 +66,9 @@
                     </Grid>
                 </StackPanel>
                 <StackPanel Height="120">
-                    <Image Name="imgBarCodeInformation" Height="120" Width="390"></Image>
+                    <Image Name="imgBarCodeInformation" Height="100" Width="390" Margin="0,10"></Image>
                 </StackPanel>
-                <StackPanel Height="109" Background="Aquamarine">
+                <StackPanel Height="109">
                     <Grid Height="110">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -76,10 +76,10 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel>
-                            <StackPanel Grid.Column="0" Background="BlueViolet" Height="14" VerticalAlignment="Top">
+                            <StackPanel Grid.Column="0" Height="14" VerticalAlignment="Top">
                                 <TextBlock Name="tbArticul1">7724000000 0 00000</TextBlock>
                             </StackPanel>
-                            <StackPanel Grid.Column="0" Background="Aqua" Height="28" VerticalAlignment="Top">
+                            <StackPanel Grid.Column="0" Height="28" VerticalAlignment="Top">
                                 <TextBlock Name="tbBrand" FontSize="26" TextDecorations="Underline" FontFamily="Arial">Buderus</TextBlock>
                             </StackPanel>
                             <StackPanel Margin="0,5,0,0">
@@ -102,7 +102,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                <StackPanel Height="33" Background="Aqua">
+                <StackPanel Height="33">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="tbNameRadiator1" FontSize="26" Margin="0,0,20,0">X-Profil</TextBlock>
                         <TextBlock Name="tbTHL1" FontSize="26" Margin="0">22/900/2000</TextBlock>

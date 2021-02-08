@@ -58,7 +58,7 @@ namespace PrinBarCode
         /// </summary>
         /// <param name="split"></param>
         /// <returns></returns>
-        private string Split(string split)
+        public string Split(string split)
         {
             int found = split.IndexOf("[");
             split = split.Remove(found,1);
