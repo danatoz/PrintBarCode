@@ -47,6 +47,10 @@ namespace PrinBarCode.View
             tbArticul12.Text = tbArticul1.Text;
             tbArticul13.Text = tbArticul1.Text;
             tbArticul2.Text = tbArticul1.Text;
+            tbBrand.Text = b;
+            tbBrand2.Text = tbBrand.Text;
+
+
             //Используем библиотеку IronBarCode для генерации шк
             GeneratedBarcode articulBarcode =
                 BarcodeWriter.CreateBarcode(tbArticul1.Text, BarcodeEncoding.Code128);
@@ -67,7 +71,6 @@ namespace PrinBarCode.View
         {
             
         }
-        //public string Label { get => label; set; }
         public LabelBarCode(string cbBrandText, string cbLayerText, string cbHeightText, string cbLengthText, string cbOptionsText, string lbArtricul, System.Drawing.Image barCodeImage)
         {
             this.cbBrandText = cbBrandText;

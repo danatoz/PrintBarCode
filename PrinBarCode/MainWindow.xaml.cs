@@ -37,9 +37,6 @@ namespace PrinBarCode
         }
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
-            LabelBarCode lblBarCode = new LabelBarCode();
-            var labelPrint = lblBarCode.mainPanel;
-
             string cbBrandText = cbBrand.Text;
             string cbLayerText = cbLayer.Text;
             string cbHeightText = cbHeight.Text;
@@ -47,20 +44,6 @@ namespace PrinBarCode
             string cbOptionsText = cbOptions.Text;
             string lbArtricul = lblArticul.Text;
 
-            /*new LabelBarCode(cbBrandText, cbLayerText,
-                cbHeightText, cbLengthText,
-                cbOptionsText, lbArtricul).Hide();
-
-            var dialog = new PrintDialog();
-            try
-            {
-                if (dialog.ShowDialog() == true)
-                    dialog.PrintVisual(labelPrint, "Вывод этикетки на печать");
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.ToString(),"Ошибка");
-            }*/
         }
         /// <summary>
         /// Передаем данные в класс GenerateArticle и пременяем метод сбора артикула к лейблу.
@@ -69,14 +52,18 @@ namespace PrinBarCode
         /// <param name="e"></param>
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
-
             string cbBrandText = cbBrand.Text;
             string cbLayerText = cbLayer.Text;
             string cbHeightText = cbHeight.Text;
             string cbLengthText = cbLength.Text;
             string cbOptionsText = cbOptions.Text;
+
+            GenerateArticle article = new GenerateArticle(cbBrandText,cbLayerText,cbHeightText,cbLengthText,cbOptionsText);
+            lblArticul.Text = article.Generate();
+
             string lbArtricul = lblArticul.Text;
-            GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(lblArticul.Text, BarcodeEncoding.Code128);
+
+
 
             new LabelBarCode(cbBrandText, cbLayerText, 
                 cbHeightText, cbLengthText, 
