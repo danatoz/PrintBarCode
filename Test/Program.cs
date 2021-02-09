@@ -68,9 +68,9 @@ namespace Test
                     ExcelWorksheet firstWorksheet = excelPackage.Workbook.Worksheets[0];
                     ExcelWorksheet namedWorksheet = excelPackage.Workbook.Worksheets["SomeWorksheet"];
 
-                    ExcelWorksheet anotherWorksheet =
+                    /*ExcelWorksheet anotherWorksheet =
                         excelPackage.Workbook.Worksheets.FirstOrDefault(x => x.Name == "SomeWorksheet");
-                    for (int i = 1; i < 48; i++)
+                    for (int i = 3; i < 47; i++)
                     {
                         eDate.Jan = firstWorksheet.Cells[i, 2].Value.ToString();
                         eDate.Feb = firstWorksheet.Cells[i, 3].Value.ToString();
@@ -86,7 +86,7 @@ namespace Test
                         eDate.Dec = firstWorksheet.Cells[i, 13].Value.ToString();
                         context.EncryptedDates.Add(eDate);
                         context.SaveChanges();
-                    }
+                    }*/
 
                     /*string test;
                     for (int i = 2; i < 48; i++)
