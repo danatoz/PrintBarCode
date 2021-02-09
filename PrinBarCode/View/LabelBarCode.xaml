@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
-        Title="LabelBarCode" Height="510" Width="430">
+        Title="LabelBarCode" Height="510" Width="460
+        ">
     <Grid>
-        <StackPanel Margin="11">
+        <StackPanel Width="420" Height="460">
             <StackPanel Name="mainPanel">
                 <StackPanel Height="33" RenderTransformOrigin="0.5,0.5">
                     <StackPanel.RenderTransform>

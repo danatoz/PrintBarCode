@@ -15,11 +15,94 @@
 
                 <StackPanel Margin="5">
                     <TabControl>
-                        <TabItem Header="Справочник брэндов"></TabItem>
-                        <TabItem Header="Справочник типов"></TabItem>
-                        <TabItem Header="Справочник высот"></TabItem>
-                        <TabItem Header="Справочник длин"></TabItem>
-                        <TabItem Header="Таблица"></TabItem>
+                        <TabItem Header="Справочник брэндов">
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <DataGrid>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Брэнд"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
+                        <TabItem Header="Справочник типов">
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <DataGrid>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Типы"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
+                        <TabItem Header="Справочник высот">
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <DataGrid>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Высота"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
+                        <TabItem Header="Справочник длин">
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <DataGrid>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Длины"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
+                        <TabItem Header="Таблица">
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel>
+                                        <DataGrid>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Артикул"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="EAN"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Брэнд"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Регулятор"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Тип"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Высота"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Глубина"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Длина"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Выключатель"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Вес"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Мощьность"></DataGridTextColumn>
+                                                <DataGridTextColumn Header="Профиль"></DataGridTextColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
                         <TabItem Header="Доступ к программе"/>
                         <TabItem Header="Компания">
                             <TabItem.Content>
