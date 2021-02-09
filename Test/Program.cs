@@ -14,6 +14,7 @@ namespace Test
             string dateMonth = DateTime.Now.ToString("MM");
             string dateYear = DateTime.Now.ToString("yyyy");
             string Date = $"{dateDay} {dateMonth} {dateYear}";
+
             List<List<string>> dateList = new List<List<string>>()
             {
                 new List<string>{"2021"},
@@ -24,7 +25,7 @@ namespace Test
             
 
 
-            //Console.Write(Date);
+            Console.Write(DateTime.Now.ToString("d"));
 
             Console.ReadKey();
         }

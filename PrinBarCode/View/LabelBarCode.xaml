@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
-        Title="LabelBarCode" Height="510" Width="460
+        Title="LabelBarCode" Height="540" Width="460
         ">
     <Grid>
-        <StackPanel Width="420" Height="460">
+        <StackPanel Width="420" Height="460" Margin="0">
             <StackPanel Name="mainPanel">
-                <StackPanel Height="33" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Margin="11" Height="33" RenderTransformOrigin="0.5,0.5">
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -24,7 +24,7 @@
                         <TextBlock Name="tbTHL2" FontSize="26" Margin="0">22/900/2000</TextBlock>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Height="109">
+                <StackPanel Height="109" Margin="11,0">
                     <Grid Height="110" RenderTransformOrigin="0.5,0.5">
                         <Grid.RenderTransform>
                             <TransformGroup>
@@ -66,10 +66,10 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                <StackPanel Height="120">
+                <StackPanel Height="120" Margin="11,0">
                     <Image Name="imgBarCodeInformation" Height="100" Width="390" Margin="0,10"></Image>
                 </StackPanel>
-                <StackPanel Height="109">
+                <StackPanel Height="109" Margin="11,0">
                     <Grid Height="110">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -103,17 +103,17 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                <StackPanel Height="33">
+                <StackPanel Height="33" Margin="11,0,11,11">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="tbNameRadiator1" FontSize="26" Margin="0,0,20,0">X-Profil</TextBlock>
                         <TextBlock Name="tbTHL1" FontSize="26" Margin="0">22/900/2000</TextBlock>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Margin="0,10,0,0">
-                <Button Name="btnPrint" Click="btnPrint_Click_1" FontSize="18" FontWeight="Bold">Печать</Button>
-            </StackPanel>
-        </StackPanel>
 
+        </StackPanel>
+        <StackPanel Margin="0,10" VerticalAlignment="Bottom">
+            <Button Name="btnPrint" Click="btnPrint_Click_1" FontSize="18" FontWeight="Bold">Печать</Button>
+        </StackPanel>
     </Grid>
 </Window>

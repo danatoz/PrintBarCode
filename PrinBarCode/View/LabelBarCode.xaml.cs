@@ -37,6 +37,10 @@ namespace PrinBarCode.View
             string len = generateArticle.Split(length);
             string b = generateArticle.Split(brand);
             string o = generateArticle.Split(options);
+
+            tbDate.Text = DateTime.Now.ToString("d");
+            tbDate2.Text = tbDate.Text;
+            
             tbTHL1.Text = $"{l}/{h}/{len}";
             tbTHL2.Text = tbTHL1.Text;
             tbArticul1.Text = articul;
