@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel\BarCodeContext.cs" />
+    <Compile Include="DataModel\Employee.cs" />
     <Compile Include="DataModel\EncryptedDate.cs" />
+    <Compile Include="DataModel\Role.cs" />
     <Compile Include="Migrations\202102091208049_InitialCreate.cs" />
     <Compile Include="Migrations\202102091208049_InitialCreate.Designer.cs">
       <DependentUpon>202102091208049_InitialCreate.cs</DependentUpon>
