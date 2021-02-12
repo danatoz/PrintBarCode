@@ -19,6 +19,11 @@ namespace PrinBarCode.DataModel
         /// <returns></returns>
         public string GetEncryptedDate(string day, string month, string year)
         {
+            var yearInt = Convert.ToInt32(year);
+            if (yearInt < 2014 || yearInt > 2059)
+            {
+                return $"{day}.{month}.{year}";
+            }
             using (BarCodeContext context = new BarCodeContext())
             {
                 var yearInt32 = Convert.ToInt32(year);
