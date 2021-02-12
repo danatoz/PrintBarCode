@@ -62,6 +62,18 @@
     <Compile Include="Migrations\202102091243556_Data-Annotations.Designer.cs">
       <DependentUpon>202102091243556_Data-Annotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102120850275_addEmployeeAndRole.cs" />
+    <Compile Include="Migrations\202102120850275_addEmployeeAndRole.Designer.cs">
+      <DependentUpon>202102120850275_addEmployeeAndRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121029222_addEmployeePassword.cs" />
+    <Compile Include="Migrations\202102121029222_addEmployeePassword.Designer.cs">
+      <DependentUpon>202102121029222_addEmployeePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121033274_addEmployeePasswordAnnatations.cs" />
+    <Compile Include="Migrations\202102121033274_addEmployeePasswordAnnatations.Designer.cs">
+      <DependentUpon>202102121033274_addEmployeePasswordAnnatations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +87,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102091243556_Data-Annotations.resx">
       <DependentUpon>202102091243556_Data-Annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102120850275_addEmployeeAndRole.resx">
+      <DependentUpon>202102120850275_addEmployeeAndRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121029222_addEmployeePassword.resx">
+      <DependentUpon>202102121029222_addEmployeePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121033274_addEmployeePasswordAnnatations.resx">
+      <DependentUpon>202102121033274_addEmployeePasswordAnnatations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

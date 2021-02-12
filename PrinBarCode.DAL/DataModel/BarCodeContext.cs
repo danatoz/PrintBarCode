@@ -25,6 +25,11 @@
         // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<BarCodeContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
     //public class MyEntity
