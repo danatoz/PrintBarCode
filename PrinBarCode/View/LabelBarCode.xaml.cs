@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using IronBarCode;
+using BarcodeLib;
 using PrinBarCode.DataModel;
+using Color = System.Drawing.Color;
+using Image = System.Drawing.Image;
 
 namespace PrinBarCode.View
 {
@@ -51,19 +54,27 @@ namespace PrinBarCode.View
                 tbBrand.Text = b;
                 tbBrand2.Text = tbBrand.Text;
 
-                //Используем библиотеку IronBarCode для генерации шк
-                GeneratedBarcode articulBarcode =
-                    BarcodeWriter.CreateBarcode(tbArticul1.Text, BarcodeEncoding.Code128);
+                //Используем библиотеку BarCodeLib для генерации шк
+                var barcode = new Barcode();
+                //Генерируем ШК
+                Image articulBarcode = barcode.Encode(TYPE.CODE128, tbArticul1.Text, Color.Black, Color.White, 133, 110);
                 GenerateBarcodeImage generateBarcodeImage = new GenerateBarcodeImage();
+                //Приводим ШК к Bitmap
+                Bitmap bitmapArticulBarcode = new Bitmap(articulBarcode);
 
                 //генерируем шк и приводим его к imagesource с
                 //помощью метода BitmapToImageSource
-                imgBarCode.Source = generateBarcodeImage.BitmapToImageSource(articulBarcode.ToBitmap());
+                imgBarCode.Source = generateBarcodeImage.BitmapToImageSource(bitmapArticulBarcode);
                 imgBarCode2.Source = imgBarCode.Source;
+
                 string moreInformation = $"{articul}{b}{l}/{h}/{len}";
-                GeneratedBarcode moreInformationBarcode =
-                    BarcodeWriter.CreateBarcode(moreInformation, BarcodeEncoding.Code128);
-                imgBarCodeInformation.Source = generateBarcodeImage.BitmapToImageSource(moreInformationBarcode.ToBitmap());
+                //Генерируем ШК
+                var moreInformationBarcode = barcode.Encode(TYPE.CODE128, moreInformation, Color.Black, Color.White, 390, 100);
+                //Приводим ШК к Bitmap
+                Bitmap bitmapMoreInformationBarcode = new Bitmap(moreInformationBarcode);
+                imgBarCodeInformation.Source = generateBarcodeImage.BitmapToImageSource(bitmapMoreInformationBarcode);
+
+                
             }
             catch (Exception e)
             {

@@ -16,7 +16,6 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using Microsoft.Win32;
-using IronBarCode;
 using PrinBarCode.View;
 using Brushes = System.Drawing.Brushes;
 using Image = System.Drawing.Image;

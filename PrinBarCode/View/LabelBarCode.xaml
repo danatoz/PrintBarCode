@@ -57,7 +57,7 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <Image Name="imgBarCode2" Height="110"/>
+                            <Image Name="imgBarCode2" Height="110" Width="133"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2">
                             <TextBlock Name="tbDate2" HorizontalAlignment="Right">08.02.2021</TextBlock>
