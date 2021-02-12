@@ -62,7 +62,6 @@ namespace PrinBarCode
         {
             int found = split.IndexOf("[");
             split = split.Remove(found,1);
-            int count = split.Length;
             found = split.IndexOf(",");
             
             split = split.Remove(found);

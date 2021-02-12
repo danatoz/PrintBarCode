@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IronBarCode;
+using PrinBarCode.DataModel;
 
 namespace PrinBarCode.View
 {
@@ -27,49 +28,68 @@ namespace PrinBarCode.View
         private string cbOptionsText;
         private string lbArtricul;
 
-        public LabelBarCode(string brand, string layer, string height, string length, string options,string articul)
+        public LabelBarCode(string brand, string layer, string height, string length, string options, string articul, string getDate)
         {
             InitializeComponent();
+            try
+            {
+                GenerateArticle generateArticle = new GenerateArticle(brand, layer, height, length, options);
+                string l = generateArticle.Split(layer);
+                string h = generateArticle.Split(height);
+                string len = generateArticle.Split(length);
+                string b = generateArticle.Split(brand);
+                string o = generateArticle.Split(options);
+                tbDate.Text = DateTime.Now.ToString("d");
+                tbDate2.Text = tbDate.Text;
 
-            GenerateArticle generateArticle = new GenerateArticle(brand, layer, height, length, options);
-            string l = generateArticle.Split(layer);
-            string h = generateArticle.Split(height);
-            string len = generateArticle.Split(length);
-            string b = generateArticle.Split(brand);
-            string o = generateArticle.Split(options);
+                tbTHL1.Text = $"{l}/{h}/{len}";
+                tbTHL2.Text = tbTHL1.Text;
+                tbArticul1.Text = articul;
+                tbArticul12.Text = tbArticul1.Text;
+                tbArticul13.Text = tbArticul1.Text;
+                tbArticul2.Text = tbArticul1.Text;
+                tbBrand.Text = b;
+                tbBrand2.Text = tbBrand.Text;
 
-            tbDate.Text = DateTime.Now.ToString("d");
-            tbDate2.Text = tbDate.Text;
-            
-            tbTHL1.Text = $"{l}/{h}/{len}";
-            tbTHL2.Text = tbTHL1.Text;
-            tbArticul1.Text = articul;
-            tbArticul12.Text = tbArticul1.Text;
-            tbArticul13.Text = tbArticul1.Text;
-            tbArticul2.Text = tbArticul1.Text;
-            tbBrand.Text = b;
-            tbBrand2.Text = tbBrand.Text;
+                //Используем библиотеку IronBarCode для генерации шк
+                GeneratedBarcode articulBarcode =
+                    BarcodeWriter.CreateBarcode(tbArticul1.Text, BarcodeEncoding.Code128);
+                GenerateBarcodeImage generateBarcodeImage = new GenerateBarcodeImage();
 
+                //генерируем шк и приводим его к imagesource с
+                //помощью метода BitmapToImageSource
+                imgBarCode.Source = generateBarcodeImage.BitmapToImageSource(articulBarcode.ToBitmap());
+                imgBarCode2.Source = imgBarCode.Source;
+                string moreInformation = $"{articul}{b}{l}/{h}/{len}";
+                GeneratedBarcode moreInformationBarcode =
+                    BarcodeWriter.CreateBarcode(moreInformation, BarcodeEncoding.Code128);
+                imgBarCodeInformation.Source = generateBarcodeImage.BitmapToImageSource(moreInformationBarcode.ToBitmap());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Ошибка");
+            }
 
-            //Используем библиотеку IronBarCode для генерации шк
-            GeneratedBarcode articulBarcode =
-                BarcodeWriter.CreateBarcode(tbArticul1.Text, BarcodeEncoding.Code128);
-            GenerateBarcodeImage generateBarcodeImage = new GenerateBarcodeImage();
+            try
+            {
+                DBContextDate dbContext = new DBContextDate();
+                Cast cast = new Cast();
+                string[] dateSplit = cast.Split(getDate);
+                string day = dateSplit[0], month = dateSplit[1], year = dateSplit[2];
+                tbDate.Text = dbContext.GetEncryptedDate(day, month, year);
+                tbDate2.Text = tbDate.Text;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Ошибка");
+            }
 
-            //генерируем шк и приводим его к imagesource с
-            //помощью метода BitmapToImageSource
-            imgBarCode.Source = generateBarcodeImage.BitmapToImageSource(articulBarcode.ToBitmap());
-            imgBarCode2.Source = imgBarCode.Source;
-            string moreInformation = $"{articul}{b}{l}/{h}/{len}";
-            GeneratedBarcode moreInformationBarcode =
-                BarcodeWriter.CreateBarcode(moreInformation, BarcodeEncoding.Code128);
-            imgBarCodeInformation.Source = generateBarcodeImage.BitmapToImageSource(moreInformationBarcode.ToBitmap());
 
         }
 
         public LabelBarCode()
         {
-            
+
         }
         public LabelBarCode(string cbBrandText, string cbLayerText, string cbHeightText, string cbLengthText, string cbOptionsText, string lbArtricul, System.Drawing.Image barCodeImage)
         {

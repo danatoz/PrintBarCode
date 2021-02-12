@@ -34,6 +34,7 @@ namespace PrinBarCode
         public MainWindow()
         {
             InitializeComponent();
+            dpDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
         }
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
@@ -57,17 +58,30 @@ namespace PrinBarCode
             string cbHeightText = cbHeight.Text;
             string cbLengthText = cbLength.Text;
             string cbOptionsText = cbOptions.Text;
-
-            GenerateArticle article = new GenerateArticle(cbBrandText,cbLayerText,cbHeightText,cbLengthText,cbOptionsText);
-            lblArticul.Text = article.Generate();
+            try
+            {
+                GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
+                lblArticul.Text = article.Generate();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Ошибка");
+            }
 
             string lbArtricul = lblArticul.Text;
+            string getDate = dpDate.Text;
 
 
-
-            new LabelBarCode(cbBrandText, cbLayerText, 
-                cbHeightText, cbLengthText, 
-                cbOptionsText, lbArtricul).ShowDialog();
+            try
+            { 
+                new LabelBarCode(cbBrandText, cbLayerText,
+                    cbHeightText, cbLengthText,
+                    cbOptionsText, lbArtricul, getDate).ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Ошибка");
+            }
 
         }
 

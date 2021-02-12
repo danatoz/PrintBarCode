@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrinBarCode;
+using PrinBarCode.DAL;
+using PrinBarCode.DAL.DataModel;
 
 namespace GenerateTest
 {
@@ -7,17 +9,9 @@ namespace GenerateTest
     public class GenerateArticleTest
     {
         [TestMethod]
-        public void TestGeneratedArticle()
+        public void TestSelectEncryptDate()
         {
-            string brand = "Buderus";
-            string options = "rs corb";
-            string layer = "20";
-            string height = "900";
-            string length = "1000";
 
-            GenerateArticle article = new GenerateArticle(brand,layer,height,length,options);
-
-            article.Generate();
         }
     }
 }

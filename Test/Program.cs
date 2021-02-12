@@ -18,11 +18,14 @@ namespace Test
         {
             Console.WindowHeight = 50;
             Console.WindowWidth = 50;
-            string dateDay = DateTime.Now.ToString("dd");
+
+            #region Comented code
+
+            /*string dateDay = DateTime.Now.ToString("dd");
             string dateMonth = DateTime.Now.ToString("MM");
             string dateYear = DateTime.Now.ToString("yyyy");
 
-            Convert.ToInt32(dateYear);
+            int year = Convert.ToInt32(dateYear);
 
 
 
@@ -30,47 +33,47 @@ namespace Test
             {
                 EncryptedDate eDate = new EncryptedDate();
 
-                /* var Jan = context.EncryptedDates.Find(2014)?.Jan;
-                 var Feb = context.EncryptedDates.Find(2014)?.Feb;
-                 var Mar = context.EncryptedDates.Find(2014)?.Mar;
-                 var Apr = context.EncryptedDates.Find(2014)?.Apr;
-                 var May = context.EncryptedDates.Find(2014)?.May;
-                 var Jun = context.EncryptedDates.Find(2014)?.Jun;
-                 var Jul = context.EncryptedDates.Find(2014)?.Jul;
-                 var Aug = context.EncryptedDates.Find(2014)?.Aug;
-                 var Sep = context.EncryptedDates.Find(2014)?.Sep;
-                 var Oct = context.EncryptedDates.Find(2014)?.Oct;
-                 var Nov = context.EncryptedDates.Find(2014)?.Nov;
-                 var Dec = context.EncryptedDates.Find(2014)?.Dec;
+                var Jan = context.EncryptedDates.Find(year)?.Jan;
+                var Feb = context.EncryptedDates.Find(year)?.Feb;
+                var Mar = context.EncryptedDates.Find(year)?.Mar;
+                var Apr = context.EncryptedDates.Find(year)?.Apr;
+                var May = context.EncryptedDates.Find(year)?.May;
+                var Jun = context.EncryptedDates.Find(year)?.Jun;
+                var Jul = context.EncryptedDates.Find(year)?.Jul;
+                var Aug = context.EncryptedDates.Find(year)?.Aug;
+                var Sep = context.EncryptedDates.Find(year)?.Sep;
+                var Oct = context.EncryptedDates.Find(year)?.Oct;
+                var Nov = context.EncryptedDates.Find(year)?.Nov;
+                var Dec = context.EncryptedDates.Find(year)?.Dec;
 
-                 Dictionary<string, string> monthList = new Dictionary<string, string>()
-                 {
-                     {"01", Jan },
-                     {"02", Feb },
-                     {"03", Mar },
-                     {"04", Apr },
-                     {"05", May },
-                     {"06", Jun },
-                     {"07", Jul },
-                     {"08", Aug },
-                     {"09", Sep },
-                     {"10", Oct },
-                     {"11", Nov },
-                     {"12", Dec }
-                 };*/
+                Dictionary<string, string> monthList = new Dictionary<string, string>()
+                {
+                    {"01", Jan },
+                    {"02", Feb },
+                    {"03", Mar },
+                    {"04", Apr },
+                    {"05", May },
+                    {"06", Jun },
+                    {"07", Jul },
+                    {"08", Aug },
+                    {"09", Sep },
+                    {"10", Oct },
+                    {"11", Nov },
+                    {"12", Dec }
+                };
 
-                //Console.WriteLine(monthList[dateMonth]);
+                Console.WriteLine($"{monthList[dateMonth]}{dateDay}0000");
 
-                FileInfo fi = new FileInfo(@"C:\Users\Dante\Documents\PrinBarCode\Test\InicializationFile\Inicial.xlsx");
+                /*FileInfo fi = new FileInfo(@"C:\Users\Dante\Documents\PrinBarCode\Test\InicializationFile\Inicial.xlsx");
                 using (ExcelPackage excelPackage = new ExcelPackage(fi))
                 {
                     ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     ExcelWorksheet firstWorksheet = excelPackage.Workbook.Worksheets[0];
                     ExcelWorksheet namedWorksheet = excelPackage.Workbook.Worksheets["SomeWorksheet"];
 
-                    /*ExcelWorksheet anotherWorksheet =
+                    ExcelWorksheet anotherWorksheet =
                         excelPackage.Workbook.Worksheets.FirstOrDefault(x => x.Name == "SomeWorksheet");
-                    for (int i = 3; i < 47; i++)
+                    for (int i = 3; i < 48; i++)
                     {
                         eDate.Jan = firstWorksheet.Cells[i, 2].Value.ToString();
                         eDate.Feb = firstWorksheet.Cells[i, 3].Value.ToString();
@@ -86,7 +89,7 @@ namespace Test
                         eDate.Dec = firstWorksheet.Cells[i, 13].Value.ToString();
                         context.EncryptedDates.Add(eDate);
                         context.SaveChanges();
-                    }*/
+                    }
 
                     /*string test;
                     for (int i = 2; i < 48; i++)
@@ -96,31 +99,42 @@ namespace Test
                            test = firstWorksheet.Cells[i, j].Value.ToString();
                            Console.WriteLine(test);
                         }
-                    }*/
-
+                    }
                 }
+            }*/
+            
 
-                //Console.WriteLine($@"{a}{dateDay}0000");
-                /*eDate.EncryptedDateId = 2014;
-                eDate.Jan = "417";
-                eDate.Feb = "418";
-                eDate.Mar = "419";
-                eDate.Apr = "420";
-                eDate.May = "453";
-                eDate.Jun = "454";
-                eDate.Jul = "455";
-                eDate.Aug = "456";
-                eDate.Sep = "457";
-                eDate.Oct = "458";
-                eDate.Nov = "459";
-                eDate.Dec = "460";
+            #endregion
 
-                context.EncryptedDates.Add(eDate);
-                context.SaveChanges();*/
-            }
+
+            string date = DateTime.Now.ToString("dd.MM.yyyy");
+
+            Program pS = new Program();
+            string[] dateSplit = pS.Split(date);
+            string day = dateSplit[0], month = dateSplit[1], year = dateSplit[2];
 
             Console.WriteLine("Готово!");
             Console.ReadKey();
+        }
+
+        public string[] Split(string date)
+        {
+            string[] s = date.Split('.');
+            string[] arrDate = new string[3];
+            for (int i = 0; i < 4; i++)
+            {
+                if (i == 0)
+                {
+                    arrDate[0] = s[0];
+                }
+                else if (i == 1)
+                    arrDate[1] = s[1];
+                else if (i == 2)
+                    arrDate[2] = s[2];
+            }
+            
+
+            return arrDate;
         }
     }
 }
