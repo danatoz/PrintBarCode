@@ -35,6 +35,7 @@ namespace PrinBarCode
         {
             InitializeComponent();
             dpDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            dpDate.IsEnabled = false;
         }
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
@@ -93,6 +94,19 @@ namespace PrinBarCode
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+        private void CbDateActive_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (cbDateActive.IsChecked == true)
+            {
+                dpDate.IsEnabled = false;
+            }
+            else if (cbDateActive.IsChecked == false)
+            {
+                dpDate.IsEnabled = true;
+            }
         }
     }
 }

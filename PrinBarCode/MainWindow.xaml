@@ -92,7 +92,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10">
                 <Label Content="Дата" FontFamily="Arial" FontSize="24" Margin="20,0,0,0"/>
-                <DatePicker Name="dpDate" Margin="77,0,0,0" FontSize="24" Width="200"></DatePicker>
+                <DatePicker Name="dpDate" Margin="77,0,18,0" FontSize="20" Width="150"></DatePicker>
+                <CheckBox Name="cbDateActive" Width="15" FontSize="24" Height="15" Margin="0" IsChecked="True" VerticalContentAlignment="Center" Click="CbDateActive_OnClick">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
             </StackPanel>
             <WrapPanel Background="#FFFBED94" Margin="10,-1,10,0" >
 
