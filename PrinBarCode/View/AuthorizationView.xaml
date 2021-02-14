@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
-        Title="Авторизация" Height="200" Width="400" WindowStyle="ToolWindow" ResizeMode="NoResize">
+        Title="Авторизация" Height="200" Width="400" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="30">
 
             <StackPanel Orientation="Horizontal" Height="40" Margin="0,0,0,20">
                 <Label Content="Логин" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,20,0" FontSize="16"></Label>
-                <ComboBox Width="230" VerticalContentAlignment="Center"></ComboBox>
+                <ComboBox Name="cbLogin" Width="230" VerticalContentAlignment="Center" SelectionChanged="CbLogin_OnSelectionChanged"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <Label Content="Пароль" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,13,0" FontSize="16"></Label>
-                <PasswordBox Width="227" VerticalContentAlignment="Center"/>
+                <PasswordBox Name="pbPassword" Width="227" VerticalContentAlignment="Center" KeyDown="PbPassword_OnKeyDown"/>
             </StackPanel>
         </StackPanel>
     </Grid>

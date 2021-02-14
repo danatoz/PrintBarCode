@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PrinBarCode.View"
         mc:Ignorable="d"
         Title="LabelBarCode" Height="540" Width="460
-        ">
+        " WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Width="420" Height="460" Margin="0">
             <StackPanel Name="mainPanel">

@@ -88,6 +88,7 @@
     </ApplicationDefinition>
     <Compile Include="Cast.cs" />
     <Compile Include="DataModel\DBContextDate.cs" />
+    <Compile Include="DataModel\UserAuthorization.cs" />
     <Compile Include="EncryptedDate.cs" />
     <Compile Include="GenerateArticle.cs" />
     <Compile Include="GenerateBarcodeImage.cs" />

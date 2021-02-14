@@ -21,17 +21,33 @@ namespace Test
 
             using (BarCodeContext db = new BarCodeContext())
             {
-                var employe = db.Employees.Where(p => p.Role.RoleName == "Оператор");
-                foreach (var e in employe)
-                {
-                    Console.WriteLine("{0} {1} {2}", e.Name, e.Surname, e.Role);
-                }
-            }
 
+            }
+            Program p = new Program();
+            p.GetUsers();
 
 
             Console.WriteLine("Готово!");
             Console.ReadKey();
         }
+        public List<PrinBarCode.DAL.DataModel.Employee> GetUsers()
+        {
+            using (BarCodeContext db = new BarCodeContext())
+            {
+                var employeeList = db.Employees.Select(p => new
+                {
+                    Name = p.Name,
+                    Surname = p.Surname,
+                    Password = p.Password
+                }).ToList();
+                foreach (var e in employeeList)
+                {
+                    Console.WriteLine("{0} {1} {2}", e.Name, e.Surname, e.Password);
+                }
+                return employeeList;
+
+            }
+        }
     }
 }
+

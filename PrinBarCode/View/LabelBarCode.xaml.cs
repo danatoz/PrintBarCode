@@ -94,8 +94,6 @@ namespace PrinBarCode.View
             {
                 MessageBox.Show(e.ToString(), "Ошибка");
             }
-
-
         }
 
         public LabelBarCode()
