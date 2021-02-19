@@ -29,17 +29,16 @@ namespace PrinBarCode.View
         public AuthorizationView()
         {
             InitializeComponent();
+
+
             using (BarCodeContext db = new BarCodeContext())
             {
-                Employee employee = new Employee();
-
                 var employees = db.Employees.Select(p => new
                 {
                     Name = p.Name,
                     Surname = p.Surname,
                     Password = p.Password
                 });
-
                 foreach (var e in employees)
                 {
                     employeeList.Add(new Employee() { Name = e.Name, Surname = e.Surname, Password = e.Password });
@@ -76,7 +75,6 @@ namespace PrinBarCode.View
                 }
             }
         }
-
         private void CbLogin_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
