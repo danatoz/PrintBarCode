@@ -37,11 +37,12 @@ namespace PrinBarCode.View
                 {
                     Name = p.Name,
                     Surname = p.Surname,
+                    Role = p.Role,
                     Password = p.Password
                 });
                 foreach (var e in employees)
                 {
-                    employeeList.Add(new Employee() { Name = e.Name, Surname = e.Surname, Password = e.Password });
+                    employeeList.Add(new Employee() { Name = e.Name, Surname = e.Surname, Password = e.Password, Role = e.Role});
                 }
 
                 for (int i = 0; i < employeeList.Count; i++)
@@ -62,7 +63,8 @@ namespace PrinBarCode.View
                     {
                         if (pbPassword.Password == employeeList[i].Password)
                         {
-                            MainWindow mw = new MainWindow();
+                            int role = employeeList[i].Role.Id;
+                            MainWindow mw = new MainWindow(role);
                             mw.Show();
                             this.Owner = mw;
                             this.Close();

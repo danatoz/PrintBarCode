@@ -30,11 +30,15 @@ namespace PrinBarCode
     public partial class MainWindow : Window
     {
 
-        public MainWindow()
+        public MainWindow(int role)
         {
             InitializeComponent();
             dpDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
             dpDate.IsEnabled = false;
+            if (role != 1)
+            {
+                itemReferenceBooks.IsEnabled = false;
+            }
         }
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {

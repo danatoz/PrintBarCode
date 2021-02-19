@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="0">
             <Menu Height="25" VerticalAlignment="Top">
                 <MenuItem Header="Файл">
-                    <MenuItem Header="Справочник" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="itemReferenceBooks" Header="Справочник" Click="MenuItem_Click"/>
                     <Separator/>
                     <MenuItem Header="Выход" Click="MenuItem_Click_1"/>
                 </MenuItem>
