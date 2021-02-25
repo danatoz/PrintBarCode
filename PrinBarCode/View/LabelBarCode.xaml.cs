@@ -24,18 +24,13 @@ namespace PrinBarCode.View
     /// </summary>
     public partial class LabelBarCode : Window
     {
-        private string cbBrandText;
-        private string cbLayerText;
-        private string cbHeightText;
-        private string cbLengthText;
-        private string cbOptionsText;
-        private string lbArtricul;
-
+        public object panel;
         public LabelBarCode(string brand, string layer, string height, string length, string options, string articul, string getDate)
         {
             InitializeComponent();
             try
             {
+                panel = mainPanel;
                 GenerateArticle generateArticle = new GenerateArticle(brand, layer, height, length, options);
                 string l = generateArticle.Split(layer);
                 string h = generateArticle.Split(height);
@@ -94,20 +89,6 @@ namespace PrinBarCode.View
             {
                 MessageBox.Show(e.ToString(), "Ошибка");
             }
-        }
-
-        public LabelBarCode()
-        {
-
-        }
-        public LabelBarCode(string cbBrandText, string cbLayerText, string cbHeightText, string cbLengthText, string cbOptionsText, string lbArtricul, System.Drawing.Image barCodeImage)
-        {
-            this.cbBrandText = cbBrandText;
-            this.cbLayerText = cbLayerText;
-            this.cbHeightText = cbHeightText;
-            this.cbLengthText = cbLengthText;
-            this.cbOptionsText = cbOptionsText;
-            this.lbArtricul = lbArtricul;
         }
 
         private void btnPrint_Click_1(object sender, RoutedEventArgs e)

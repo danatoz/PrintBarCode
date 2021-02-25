@@ -48,7 +48,7 @@ namespace PrinBarCode
             string _options = Split(this.options).ToString();
             string options = Resources.OptionsDictionary[_options];
 
-            string result = $"7724{brand}{layer}{height}{length}{options}";//"7724{0}{1}{2}{3}{4}",brand, layer, height, length, options);
+            string result = $"7724{brand}{layer}{height}{length}{options}";
             return result;
         }
 

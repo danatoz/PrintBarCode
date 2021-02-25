@@ -47,8 +47,43 @@ namespace PrinBarCode
             string cbHeightText = cbHeight.Text;
             string cbLengthText = cbLength.Text;
             string cbOptionsText = cbOptions.Text;
-            string lbArtricul = lblArticul.Text;
+            try
+            {
+                GenerateArticle article = new GenerateArticle(cbBrandText, cbLayerText, cbHeightText, cbLengthText, cbOptionsText);
+                lblArticul.Text = article.Generate();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Ошибка");
+            }
 
+            string lbArtricul = lblArticul.Text;
+            string getDate = dpDate.Text;
+
+
+            try
+            {
+                var lbl = new LabelBarCode(cbBrandText, cbLayerText,
+                    cbHeightText, cbLengthText,
+                    cbOptionsText, lbArtricul, getDate);
+                lbl.Show();
+                lbl.Hide();
+                
+                
+                var dialog = new PrintDialog();
+                if (dialog.ShowDialog() == true)
+                {
+                    dialog.PrintVisual(lbl.mainPanel, "Вывод этикетки на печать");
+                }
+                else
+                {
+                    lbl.Close();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Ошибка");
+            }
         }
         /// <summary>
         /// Передаем данные в класс GenerateArticle и пременяем метод сбора артикула к лейблу.
