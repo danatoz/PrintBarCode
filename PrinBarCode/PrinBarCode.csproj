@@ -173,18 +173,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Icon\Icon.png" />
+    <Resource Include="Image\Icon\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Icon\sertification.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Image\MyBarCode.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrinBarCode.DAL\PrinBarCode.DAL.csproj">

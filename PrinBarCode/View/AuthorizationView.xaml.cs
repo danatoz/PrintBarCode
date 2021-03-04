@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -29,52 +30,86 @@ namespace PrinBarCode.View
         public AuthorizationView()
         {
             InitializeComponent();
-
-
-            using (BarCodeContext db = new BarCodeContext())
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+            try
             {
-                var employees = db.Employees.Select(p => new
-                {
-                    Name = p.Name,
-                    Surname = p.Surname,
-                    Role = p.Role,
-                    Password = p.Password
-                });
-                foreach (var e in employees)
-                {
-                    employeeList.Add(new Employee() { Name = e.Name, Surname = e.Surname, Password = e.Password, Role = e.Role});
-                }
+                throw new Exception("1");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Cath clause caught");
+            }
 
-                for (int i = 0; i < employeeList.Count; i++)
+            try
+            {
+                using (BarCodeContext db = new BarCodeContext())
                 {
-                    cbLogin.Items.Add($"{employeeList[i].Name} {employeeList[i].Surname}");
+                    var employees = db.Employees.Select(p => new
+                    {
+                        Name = p.Name,
+                        Surname = p.Surname,
+                        Role = p.Role,
+                        Password = p.Password
+                    });
+                    foreach (var e in employees)
+                    {
+                        employeeList.Add(new Employee() { Name = e.Name, Surname = e.Surname, Password = e.Password, Role = e.Role });
+                    }
+
+                    for (int i = 0; i < employeeList.Count; i++)
+                    {
+                        cbLogin.Items.Add($"{employeeList[i].Name} {employeeList[i].Surname}");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+        }
+
+        static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            StreamWriter er = new StreamWriter("errors.txt");
+            er.WriteLine("MyHandler caught: " + e.Message);
+            er.WriteLine("Runtime terminating: {0}", args.IsTerminating);
+            er.Close();
         }
 
         private void PbPassword_OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.IsDown == (e.Key == Key.Enter))
+            try
             {
-                for (int i = 0; i < employeeList.Count; i++)
+
+                if (e.IsDown == (e.Key == Key.Enter))
                 {
-                    string s = cbLogin.SelectedItem.ToString();
-                    if (s == ($"{employeeList[i].Name} {employeeList[i].Surname}"))
+                    for (int i = 0; i < employeeList.Count; i++)
                     {
-                        if (pbPassword.Password == employeeList[i].Password)
+                        string s = cbLogin.SelectedItem.ToString();
+                        if (s == ($"{employeeList[i].Name} {employeeList[i].Surname}"))
                         {
-                            int role = employeeList[i].Role.Id;
-                            MainWindow mw = new MainWindow(role);
-                            mw.Show();
-                            this.Owner = mw;
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Неверный пароль!");
+                            if (pbPassword.Password == employeeList[i].Password)
+                            {
+                                int role = employeeList[i].Role.Id;
+                                MainWindow mw = new MainWindow(role);
+                                mw.Show();
+                                this.Owner = mw;
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверный пароль!");
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(e.ToString());
             }
         }
         private void CbLogin_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

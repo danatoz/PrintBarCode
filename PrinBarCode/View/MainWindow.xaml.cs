@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
+using System.Security.Permissions;
 using Microsoft.Win32;
 using PrinBarCode.View;
 using Brushes = System.Drawing.Brushes;
@@ -29,16 +30,38 @@ namespace PrinBarCode
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.ControlAppDomain)]
         public MainWindow(int role)
         {
+
             InitializeComponent();
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+
+            try
+            {
+                throw new Exception("1");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Cath clause caught");
+            }
+
             dpDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
             dpDate.IsEnabled = false;
             if (role != 1)
             {
                 itemReferenceBooks.IsEnabled = false;
             }
+        }
+
+        static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception) args.ExceptionObject;
+            StreamWriter er = new StreamWriter("errors.txt");
+            er.WriteLine("MyHandler caught: " + e.Message);
+            er.WriteLine("Runtime terminating: {0}", args.IsTerminating);
+            er.Close();
         }
         private void btnPrintBarCode_Click(object sender, RoutedEventArgs e)
         {
@@ -68,8 +91,8 @@ namespace PrinBarCode
                     cbOptionsText, lbArtricul, getDate);
                 lbl.Show();
                 lbl.Hide();
-                
-                
+
+
                 var dialog = new PrintDialog();
                 if (dialog.ShowDialog() == true)
                 {
@@ -112,7 +135,7 @@ namespace PrinBarCode
 
 
             try
-            { 
+            {
                 new LabelBarCode(cbBrandText, cbLayerText,
                     cbHeightText, cbLengthText,
                     cbOptionsText, lbArtricul, getDate).ShowDialog();

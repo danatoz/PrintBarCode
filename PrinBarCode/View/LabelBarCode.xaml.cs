@@ -27,7 +27,15 @@ namespace PrinBarCode.View
         public object panel;
         public LabelBarCode(string brand, string layer, string height, string length, string options, string articul, string getDate)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
             try
             {
                 panel = mainPanel;
@@ -40,6 +48,8 @@ namespace PrinBarCode.View
                 tbDate.Text = DateTime.Now.ToString("d");
                 tbDate2.Text = tbDate.Text;
 
+                #region Присвоение
+
                 tbTHL1.Text = $"{l}/{h}/{len}";
                 tbTHL2.Text = tbTHL1.Text;
                 tbArticul1.Text = articul;
@@ -48,6 +58,19 @@ namespace PrinBarCode.View
                 tbArticul2.Text = tbArticul1.Text;
                 tbBrand.Text = b;
                 tbBrand2.Text = tbBrand.Text;
+                tbAdress.Text = "Bosh Group";
+                tbFirm.Text = "ООО Еврорадиаторы";
+                tbManufacturerAddress.Text = "Россия г. Энгельс";
+                tbIndex.Text = "413105";
+                tbRegion.Text = "Саратовска обл.";
+                tbAdress2.Text = tbAdress.Text;
+                tbFirm2.Text = tbFirm.Text;
+                tbManufacturerAddress2.Text = tbManufacturerAddress.Text;
+                tbIndex2.Text = tbIndex.Text;
+                tbRegion2.Text = tbRegion.Text;
+                string mInfo = $"{tbAdress.Text}{tbFirm.Text}{tbManufacturerAddress.Text}{tbIndex.Text}{tbRegion.Text}";
+
+                #endregion
 
                 //Используем библиотеку BarCodeLib для генерации шк
                 var barcode = new Barcode();
@@ -62,14 +85,14 @@ namespace PrinBarCode.View
                 imgBarCode.Source = generateBarcodeImage.BitmapToImageSource(bitmapArticulBarcode);
                 imgBarCode2.Source = imgBarCode.Source;
 
-                string moreInformation = $"{articul}{b}{l}/{h}/{len}";
+                string moreInformation = $"{b}{l}/{h}/{len}";
                 //Генерируем ШК
                 var moreInformationBarcode = barcode.Encode(TYPE.CODE128, moreInformation, Color.Black, Color.White, 390, 100);
                 //Приводим ШК к Bitmap
                 Bitmap bitmapMoreInformationBarcode = new Bitmap(moreInformationBarcode);
                 imgBarCodeInformation.Source = generateBarcodeImage.BitmapToImageSource(bitmapMoreInformationBarcode);
 
-                
+
             }
             catch (Exception e)
             {
@@ -93,11 +116,19 @@ namespace PrinBarCode.View
 
         private void btnPrint_Click_1(object sender, RoutedEventArgs e)
         {
-            var dialog = new PrintDialog();
-            if (dialog.ShowDialog() == true)
+            try
             {
-                dialog.PrintVisual(mainPanel, "Вывод этикетки на печать");
+                var dialog = new PrintDialog();
+                if (dialog.ShowDialog() == true)
+                {
+                    dialog.PrintVisual(mainPanel, "Вывод этикетки на печать");
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
         }
     }
 }

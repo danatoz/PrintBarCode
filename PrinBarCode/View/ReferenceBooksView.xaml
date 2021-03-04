@@ -12,7 +12,6 @@
                 <Menu Height="30"></Menu>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="Auto">
-
                 <StackPanel Margin="5">
                     <TabControl>
                         <TabItem Header="Справочник брэндов">
@@ -103,7 +102,29 @@
                                 </Grid>
                             </TabItem.Content>
                         </TabItem>
-                        <TabItem Header="Доступ к программе"/>
+                        <TabItem Header="Доступ к программе">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" MinHeight="199" Margin="0,10">
+                                    <DataGrid>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Имя"/>
+                                            <DataGridTextColumn Header="Фамилия"/>
+                                            <DataGridTextColumn Header="Должность"/>
+                                            <DataGridTextColumn Header="Пароль"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Добавить" Width="100" Height="45"/>
+                                    <Button Content="Удалить" Margin="90,0,0,0" Width="100" Height="45"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </TabItem>
                         <TabItem Header="Компания">
                             <TabItem.Content>
                                 <Grid>
